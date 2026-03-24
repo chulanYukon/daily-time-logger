@@ -23,7 +23,7 @@ playwright install chromium
 
 ### 2. Configure environment variables
 
-Create `configurations/.env` for Bitbucket:
+Create `.env` for Bitbucket:
 
 ```env
 BITBUCKET_WORKSPACE=your-workspace
@@ -34,7 +34,7 @@ BITBUCKET_AUTHOR_NICKNAME=your-nickname
 BITBUCKET_REPOS=repo-one,repo-two,repo-three
 ```
 
-Create `configurations/.env.timetracker` for the time tracker:
+Create `.env.timetracker` for the time tracker:
 
 ```env
 TIMETRACKER_USERNAME=your-email

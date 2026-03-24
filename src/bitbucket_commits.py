@@ -5,7 +5,7 @@ from datetime import date, datetime, timezone
 import requests
 from dotenv import load_dotenv
 
-load_dotenv("configurations/.env")
+load_dotenv(".env")
 
 REPOS = [r.strip() for r in os.getenv("BITBUCKET_REPOS", "").split(",") if r.strip()]
 

@@ -43,7 +43,7 @@ src/bitbucket_commits.py  ──►  output/commits_<date>.txt
 | Package | Purpose |
 |---|---|
 | `requests` | Bitbucket REST API calls |
-| `python-dotenv` | Load `configurations/.env` / `configurations/.env.timetracker` files |
+| `python-dotenv` | Load `.env` / `.env.timetracker` files |
 | `playwright` (chromium) | Browser automation for the time tracker UI |
 
 ---
@@ -52,8 +52,8 @@ src/bitbucket_commits.py  ──►  output/commits_<date>.txt
 
 | File | Used by | Contains |
 |---|---|---|
-| `configurations/.env` | `src/bitbucket_commits.py` | Workspace, username, token, author UUID/nickname, repo list |
-| `configurations/.env.timetracker` | `src/time_tracker.py` | Time tracker login credentials |
+| `.env` | `src/bitbucket_commits.py` | Workspace, username, token, author UUID/nickname, repo list |
+| `.env.timetracker` | `src/time_tracker.py` | Time tracker login credentials |
 
 ---
 

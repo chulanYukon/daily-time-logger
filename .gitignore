@@ -1,5 +1,5 @@
-configurations/.env
-configurations/.env.timetracker
+.env
+.env.timetracker
 .claude
 __pycache__
 output/

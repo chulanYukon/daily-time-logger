@@ -5,7 +5,7 @@ from datetime import date
 from playwright.sync_api import sync_playwright
 from dotenv import load_dotenv
 
-load_dotenv("configurations/.env.timetracker")
+load_dotenv(".env.timetracker")
 
 TIMETRACKER_URL = "https://timetracker.yukon.software/login.aspx"
 PROJECT_NAME = "booq platform (Eijsink)"
