@@ -4,8 +4,8 @@
 
 A two-step CLI automation tool for daily time logging:
 
-1. **`bitbucket_commits.py`** — Calls the Bitbucket REST API, collects all your commits across configured repositories for a given date, formats them, and saves the output to a `commits_<date>.txt` file.
-2. **`time_tracker.py`** — Reads that text file and uses browser automation (Playwright) to log into the time tracker web app, navigate to the correct date on the calendar, and submit the commits as the day's time entry description (8h 0m).
+1. **`src/bitbucket_commits.py`** — Calls the Bitbucket REST API, collects all your commits across configured repositories for a given date, formats them, and saves the output to `output/commits_<date>.txt`.
+2. **`src/time_tracker.py`** — Reads that text file and uses browser automation (Playwright) to log into the time tracker web app, navigate to the correct date on the calendar, and submit the commits as the day's time entry description (8h 0m).
 
 ---
 
@@ -30,10 +30,10 @@ A two-step CLI automation tool for daily time logging:
 Bitbucket API
      │
      ▼
-bitbucket_commits.py  ──►  commits_<date>.txt
-                                   │
-                                   ▼
-                          time_tracker.py  ──►  Time Tracker Web App
+src/bitbucket_commits.py  ──►  output/commits_<date>.txt
+                                          │
+                                          ▼
+                              src/time_tracker.py  ──►  Time Tracker Web App
 ```
 
 ---
@@ -43,7 +43,7 @@ bitbucket_commits.py  ──►  commits_<date>.txt
 | Package | Purpose |
 |---|---|
 | `requests` | Bitbucket REST API calls |
-| `python-dotenv` | Load `.env` / `.env.timetracker` files |
+| `python-dotenv` | Load `configurations/.env` / `configurations/.env.timetracker` files |
 | `playwright` (chromium) | Browser automation for the time tracker UI |
 
 ---
@@ -52,8 +52,8 @@ bitbucket_commits.py  ──►  commits_<date>.txt
 
 | File | Used by | Contains |
 |---|---|---|
-| `.env` | `bitbucket_commits.py` | Workspace, username, token, author UUID/nickname, repo list |
-| `.env.timetracker` | `time_tracker.py` | Time tracker login credentials |
+| `configurations/.env` | `src/bitbucket_commits.py` | Workspace, username, token, author UUID/nickname, repo list |
+| `configurations/.env.timetracker` | `src/time_tracker.py` | Time tracker login credentials |
 
 ---
 

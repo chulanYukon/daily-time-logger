@@ -1,10 +1,11 @@
 import os
+import re
 import sys
 from datetime import date
 from playwright.sync_api import sync_playwright
 from dotenv import load_dotenv
 
-load_dotenv(".env.timetracker")
+load_dotenv("configurations/.env.timetracker")
 
 TIMETRACKER_URL = "https://timetracker.yukon.software/login.aspx"
 PROJECT_NAME = "booq platform (Eijsink)"
@@ -13,7 +14,7 @@ MINUTES = "0"
 
 
 def read_description(target_date: date) -> str:
-    commits_file = f"commits_{target_date}.txt"
+    commits_file = f"output/commits_{target_date}.txt"
     with open(commits_file, "r", encoding="utf-8") as f:
         content = f.read()
     lines = [line for line in content.splitlines() if line.strip()]
@@ -40,9 +41,9 @@ def submit_timetracker(description: str, target_date: date):
         page.get_by_text("Log Hours").first.click()
         page.wait_for_load_state("networkidle")
 
-        # Click today's date in the calendar
+        # Click the target date in the calendar — exclude "off" cells (overflow days from adjacent months)
         day = str(target_date.day)
-        page.locator("table td").filter(has_text=day).first.click()
+        page.locator("table td:not(.off)").filter(has_text=re.compile(f"^{day}$")).first.click()
 
         # Set hours and minutes
         page.locator("#vFORMWORKHOURLOGHOURS").fill(HOURS)

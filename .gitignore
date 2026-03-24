@@ -1,2 +1,5 @@
-.env
-.env.timetracker
+configurations/.env
+configurations/.env.timetracker
+.claude
+__pycache__
+output/

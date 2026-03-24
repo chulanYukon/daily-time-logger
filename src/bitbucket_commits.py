@@ -5,7 +5,7 @@ from datetime import date, datetime, timezone
 import requests
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv("configurations/.env")
 
 REPOS = [r.strip() for r in os.getenv("BITBUCKET_REPOS", "").split(",") if r.strip()]
 
@@ -82,7 +82,7 @@ if __name__ == "__main__":
 
     result = "\n".join(all_parts)
 
-    output_file = f"commits_{target_date}.txt"
+    output_file = f"output/commits_{target_date}.txt"
     with open(output_file, "w", encoding="utf-8") as f:
         f.write(result)
 

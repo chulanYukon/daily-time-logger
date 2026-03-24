@@ -6,11 +6,11 @@ See the [Information Sheet](information-sheet.md) for additional details.
 
 ## Scripts
 
-### `bitbucket_commits.py`
-Fetches commits authored by you across configured repos for a given date and writes them to a `commits_<date>.txt` file. Merge commits are excluded.
+### `src/bitbucket_commits.py`
+Fetches commits authored by you across configured repos for a given date and writes them to `output/commits_<date>.txt`. Merge commits are excluded.
 
-### `time_tracker.py`
-Reads the commits file and submits a time log entry via browser automation (Playwright).
+### `src/time_tracker.py`
+Reads the commits file from `output/` and submits a time log entry via browser automation (Playwright).
 
 ## Setup
 
@@ -23,7 +23,7 @@ playwright install chromium
 
 ### 2. Configure environment variables
 
-Create a `.env` file for Bitbucket:
+Create `configurations/.env` for Bitbucket:
 
 ```env
 BITBUCKET_WORKSPACE=your-workspace
@@ -34,7 +34,7 @@ BITBUCKET_AUTHOR_NICKNAME=your-nickname
 BITBUCKET_REPOS=repo-one,repo-two,repo-three
 ```
 
-Create a `.env.timetracker` file for the time tracker:
+Create `configurations/.env.timetracker` for the time tracker:
 
 ```env
 TIMETRACKER_USERNAME=your-email
@@ -45,21 +45,21 @@ TIMETRACKER_PASSWORD=your-password
 
 ```bash
 # Fetch commits for today
-python bitbucket_commits.py
+python src/bitbucket_commits.py
 
 # Fetch commits for a specific date
-python bitbucket_commits.py 2026-03-18
+python src/bitbucket_commits.py 2026-03-18
 
-# Submit time entry for today (requires commits_<today>.txt)
-python time_tracker.py
+# Submit time entry for today (requires output/commits_<today>.txt)
+python src/time_tracker.py
 
 # Submit time entry for a specific date
-python time_tracker.py 2026-03-18
+python src/time_tracker.py 2026-03-18
 ```
 
 ## Typical workflow
 
 ```bash
-python bitbucket_commits.py        # generates commits_<date>.txt
-python time_tracker.py              # submits it to the time tracker
+python src/bitbucket_commits.py    # generates output/commits_<date>.txt
+python src/time_tracker.py         # submits it to the time tracker
 ```

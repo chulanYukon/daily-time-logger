@@ -1,8 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(pip install:*)",
-      "Bash(python -c \"import requests, dotenv, playwright; print\\(''All packages OK''\\)\")"
-    ]
-  }
-}
